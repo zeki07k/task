@@ -32,6 +32,8 @@ len(os.listdir(directory_of_sounds + '/vi95kMQ65UeU7K1wae12D1GUeXd2')) # should 
 # to UNDER-detect. In regards to tuning prec/recall, you should consider
 # a correctly detected cough to be worth 10 "points" and a "false positive"
 # (ie, a "peak" which is not a cough) to be worth -1 points.
+# The simpler, the better. No need to use Tensorflow, pre-trained models, or anything like that.
+# Feel free to use libraries, but know that this is not a test of your modeling skills.
 
 def detect_coughs(file = 'sounds/samples/vi95kMQ65UeU7K1wae12D1GUeXd2/sample-1613658921823.m4a'):
     # Replace the below random code with something meaningful which
