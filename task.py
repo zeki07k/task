@@ -50,16 +50,16 @@ def detect_coughs(file = 'sounds/samples/vi95kMQ65UeU7K1wae12D1GUeXd2/sample-161
     AudioSegment.ffmpeg = "C:\\Users\\MONSTER\\Desktop\\fmpeg\\ffmpeg-N-101185-g029e3c1c70-win64-gpl-shared-vulkan\\bin\\ffmpeg.exe"
     AudioSegment.ffprobe = "C:\\Users\\MONSTER\\Desktop\\fmpeg\\ffmpeg-N-101185-g029e3c1c70-win64-gpl-shared-vulkan\\bin\\ffprobe.exe"
 
-    wav_filename = os.path.splitext(os.path.basename(file)[0]) + tuple(".wav")
+    wav_filename = os.path.splitext(os.path.basename(file)[0]) + tuple(".wav")  #change file format m4a to wav
 
     audio_segment = AudioSegment.from_file(file,format='m4a').export(out_f=wav_filename,format="wav")
-    change_dbfs = -20.0 - audio_segment.dBFS
+    change_dbfs = -20.0 - audio_segment.dBFS  #change dBFS
     normalized_sound = audio_segment.apply_gain(change_dbfs)
     nosilent_data = detect_nonsilent(normalized_sound,min_silence_len=500,silence_thresh=-20,seek_step=1)
     peak_start_time = []
     for chunks in nosilent_data:
         for chunk in chunks:
-            peak_start_time.append(chunk[0])
+            peak_start_time.append(chunk[0]) #peak_start time
 
     peaks = peak_start_time
     peaks.sort()
